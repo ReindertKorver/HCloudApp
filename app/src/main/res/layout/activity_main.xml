@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            tools:context="com.example.reind.hcloudtest.MainActivity">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                </android.support.v4.view.ViewPager>
+
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/appbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/appbar_padding_top"
+                    android:theme="@style/AppTheme.AppBarOverlay">
+
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_weight="1"
+                        android:background="?attr/colorPrimary"
+                        app:layout_scrollFlags="scroll|enterAlways"
+                        app:popupTheme="@style/AppTheme.PopupOverlay"
+                        app:title="H. Cloud Zorg App">
+
+                    </android.support.v7.widget.Toolbar>
+
+                    <TextView
+                        android:id="@+id/SelectedClientText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:freezesText="true"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="Geen cliënt geselecteerd"
+                        android:textAlignment="textStart" />
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TabItem
+                            android:id="@+id/tabItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tab 1" />
+
+                        <android.support.design.widget.TabItem
+                            android:id="@+id/tabItem2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tab_text_2" />
+
+                        <android.support.design.widget.TabItem
+                            android:id="@+id/tabItem3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tab_text_3" />
+
+                    </android.support.design.widget.TabLayout>
+                </android.support.design.widget.AppBarLayout>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/CardNewMeasure"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="90dp"
+                    android:visibility="invisible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="7dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/SaveMeasureResult"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Resultaat:"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/SaveMeasure" />
+
+                        <TextView
+                            android:id="@+id/cardNewMeasureTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Nieuwe meting"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/measureText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="Temperatuur:"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/cardNewMeasureTitle" />
+
+                        <EditText
+                            android:id="@+id/TemperatureCelsius"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="40dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/colorAccent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView4"
+                            app:layout_constraintTop_toBottomOf="@+id/measureText" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="°C"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/measureText" />
+
+                        <TextView
+                            android:id="@+id/BloodPressureLowText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Bloeddruk:"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                        <EditText
+                            android:id="@+id/BloodPressLow"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="110dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/colorAccent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/BloodPressBelowText"
+                            app:layout_constraintTop_toBottomOf="@+id/BloodPressureLowText" />
+
+                        <TextView
+                            android:id="@+id/BloodPressBelowText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Bovendruk"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/BloodPressureLowText" />
+
+                        <TextView
+                            android:id="@+id/bloodPressBelowText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Onderdruk"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/BloodPressBelowText" />
+
+                        <EditText
+                            android:id="@+id/bloodPressHigh"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="110dp"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/colorAccent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.472"
+                            app:layout_constraintStart_toEndOf="@+id/BloodPressBelowText"
+                            app:layout_constraintTop_toBottomOf="@+id/BloodPressLow" />
+
+                        <Button
+                            android:id="@+id/SaveMeasure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:clickable="true"
+                            android:contextClickable="false"
+                            android:focusable="true"
+                            android:onClick="SaveMeasureClick"
+                            android:text="Meting opslaan"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/bloodPressHigh" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/ClientCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignStart="@+id/CardNewMeasure"
+                    android:layout_alignTop="@+id/CardNewMeasure"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:visibility="visible"
+                    app:cardBackgroundColor="@android:color/background_light"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="7dp"
+                    app:contentPadding="10dp">
+
+                    <TextView
+                        android:id="@+id/Refresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|bottom|right"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:contextClickable="false"
+                        android:drawableLeft="@drawable/refreshicon"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:elevation="9dp"
+                        android:onClick="RefreshClients"
+                        android:text="Refresh"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/CarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="Selecteer een Cliënt"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/SearchClient"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="30dp"
+                        android:ems="10"
+                        android:hint="Zoeken"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorPrimary" />
+
+                    <ListView
+                        android:id="@+id/ClientListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginTop="80dp"
+                        android:background="#FFFFFFFF"
+                        android:divider="@color/colorPrimaryDark"
+                        android:dividerHeight="2dp"
+                        android:scrollbars="vertical">
+
+                    </ListView>
+
+                </android.support.v7.widget.CardView>
+            </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="24dp">
+
+                <Button
+                    android:id="@+id/imageButton"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/buttonstyle"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:baselineAlignBottom="false"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:drawablePadding="0dp"
+                    android:drawableStart="@drawable/newmeasure"
+                    android:drawableTint="@android:color/white"
+                    android:elevation="10dp"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:keyboardNavigationCluster="false"
+                    android:onClick="NewMeasureClick"
+                    android:paddingLeft="10dp"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="3"
+                    android:text="Nieuwe meting"
+                    android:textAllCaps="false"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/newmeasure" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/ClientSelection"
+                android:layout_width="129dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                android:clickable="true"
+                android:focusable="auto"
+                android:onClick="ClientSelectionClick"
+                android:tint="@android:color/background_light"
+                app:srcCompat="?android:attr/actionModeWebSearchDrawable"
+                app:useCompatPadding="true"
+                tools:layout_editor_absoluteX="239dp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/ScanQRCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="75dp"
+                android:clickable="true"
+                android:focusable="auto"
+                android:onClick="openScannerClick"
+                android:tint="@android:color/white"
+                app:srcCompat="@drawable/camera"
+                app:useCompatPadding="true"
+                tools:layout_editor_absoluteX="239dp" />
+
+            <EditText
+                android:id="@+id/apithherapies"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="500dp"
+                android:visibility="gone"
+                android:freezesText="true"/>
+
+        </android.support.design.widget.CoordinatorLayout>
+    </FrameLayout>
+
+    <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/headerView3"
+            layout="@layout/navigation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="200dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@android:color/background_light">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="195dp"
+                android:src="@drawable/hcloud"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <SurfaceView
+                android:id="@+id/surfaceView"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="195dp"
+                android:background="@color/colorAccent"
+                android:backgroundTint="@color/colorPrimary" />
+        </RelativeLayout>
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>
