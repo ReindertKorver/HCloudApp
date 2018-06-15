@@ -13,4 +13,5 @@ App is made in Android Studio and is therefore made for Android.<br/>
 API used for this application is <a href="https://www.dreamfactory.com">dreamfactory.com</a><br/>
 In dreamfactory I added a mysql database hosted on <a href="https://www.db4free.net/">db4free.net</a>
 <br/>
-By Reindert Korver
+By Reindert Korver<br/>
+Started project 24-4-2018
